@@ -1,3 +1,5 @@
+# [Link to KanBan](https://github.com/DannyDannyDanny/DeepPrivacy/projects/1?fullscreen=true)
+
 # DeepPrivacy
 ![](images/example.gif)
 
