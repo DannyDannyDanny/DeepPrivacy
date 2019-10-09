@@ -4,19 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-torch = "*"
-torchvision = "*"
-cython = "*"
-numpy = "*"
-scikit-learn = "*"
-matplotlib = "*"
-pandas = "*"
-tqdm = "*"
-tflib = "*"
-"autopep8" = "*"
-moviepy = "*"
-opencv-python = "*"
-requests = "*"
 
 [dev-packages]
 
