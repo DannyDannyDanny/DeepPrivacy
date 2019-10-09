@@ -1,4 +1,4 @@
-FROM python:3.7-slim
+FROM python:3.7
 RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y --no-install-recommends build-essential gcc
 
 RUN python -m venv /opt/venv
