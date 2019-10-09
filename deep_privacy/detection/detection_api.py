@@ -5,7 +5,7 @@ from . import keypoint_rcnn
 from .utils import match_bbox_keypoint
 
 face_detector = DSFDDetector(
-    "deep_privacy/detection/dsfd/weights/WIDERFace_DSFD_RES152.pth")
+    './deep_privacy/resources/WIDERFace_DSFD_RES152.pth')
 
 
 def clip_detections(detections, imshape):

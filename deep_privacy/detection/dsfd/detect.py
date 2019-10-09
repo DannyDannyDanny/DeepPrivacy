@@ -5,12 +5,11 @@ from .face_ssd import build_ssd
 from .config import resnet152_model_config
 from . import torch_utils
 
-
 class DSFDDetector:
 
     def __init__(
             self,
-            weight_path="dsfd/weights/WIDERFace_DSFD_RES152.pth",
+            weight_path='./deep_privacy/resources/WIDERFace_DSFD_RES152.pth',
             nms_iou_threshold=.3,
             ):
         self.nms_iou_threshold = nms_iou_threshold
@@ -53,5 +52,3 @@ class DSFDDetector:
         # Move axis such that we get #[xmin, ymin, xmax, ymax, det_conf]
         dets = np.roll(detections, 4, axis=-1)
         return dets[0]
-
-
