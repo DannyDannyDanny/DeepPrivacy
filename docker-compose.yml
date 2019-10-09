@@ -4,13 +4,11 @@ services:
   web:
     restart: unless-stopped
     build: ./
-    expose:
-      - "8000"
     volumes:
       - public_folder:/app/public
     environment:
       ENV: "production"
-    command: gunicorn app.wsgi --workers=2 --threads=4 --worker-tmp-dir /dev/shm --worker-class=gthread --log-file=-  -b 0.0.0.0:8000
+    command: gunicorn --workers=2 --threads=4 --worker-tmp-dir /dev/shm --worker-class=gthread --log-file=- -b 0.0.0.0:8000 app:app
     # /usr/local/bin/gunicorn -w 2 -b :8000 app:app
     networks:
       - api
