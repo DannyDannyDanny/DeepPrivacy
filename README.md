@@ -1,4 +1,5 @@
-> coming soon
+# DeepPrivacy
+# [Link to KanBan](https://github.com/DannyDannyDanny/DeepPrivacy/projects/1?fullscreen=true)
 
 ## Run App
 `FLASK_APP=app.py python -m flask run`
