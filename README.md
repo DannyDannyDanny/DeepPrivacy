@@ -13,6 +13,11 @@ $ curl -F "file=@lady.png" localhost:5000/
 ```
 
 ```bash
-rsync -avz rpmpkgs/ root@192.168.0.101:/home
-rsync -avz deep-privacy-resources root@142.93.98.12:/
+# move files from local to offsite repo
+$ rsync -avz DeepPrivacy/ root@142.93.98.12:/home/DannyDannyDanny/
+```
+
+```bash
+# once copied run inside DeepPrivacy
+docker-compose up --build -d
 ```
