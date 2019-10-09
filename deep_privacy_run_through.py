@@ -1,6 +1,5 @@
 import sys
 import io
-import matplotlib.pyplot as plt
 from deep_privacy.config_parser import load_config
 from deep_privacy.inference import infer, deep_privacy_anonymizer
 import torch
