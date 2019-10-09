@@ -46,7 +46,7 @@ def upload_file():
     filepath_public = os.path.join(app.config["PUBLIC_FOLDER"], filename)
     anon_and_write_imgs([filepath_upload],[filepath_public])
     # return redirect(url_for("uploaded_file", filename=filename))
-    return jsonify(file_url=filepath_public)
+    return jsonify(file_url=f'http://142.93.98.12{filepath_public[1:]}')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
