@@ -40,3 +40,7 @@ tensorboard_summaries/
 *.csv
 
 *.DS_Store
+
+
+/public
+/upload
