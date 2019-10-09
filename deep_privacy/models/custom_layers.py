@@ -1,13 +1,13 @@
 from torch import nn
 import torch
 import numpy as np
-from apex import amp
+# from apex import amp
 
 
 # https://github.com/nvnbny/progressive_growing_of_gans/blob/master/modelUtils.py
 class WSConv2d(nn.Module):
     """
-    This is the wt scaling conv layer layer. Initialize with N(0, scale). Then 
+    This is the wt scaling conv layer layer. Initialize with N(0, scale). Then
     it will multiply the scale for every forward pass
     """
 
@@ -60,7 +60,6 @@ class PixelwiseNormalization(nn.Module):
     def __init__(self):
         super().__init__()
 
-    @amp.float_function
     def forward(self, x):
         factor = ((x**2).mean(dim=1, keepdim=True) + 1e-8)**0.5
         return x / factor

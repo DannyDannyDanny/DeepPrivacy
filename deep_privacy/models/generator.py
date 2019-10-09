@@ -136,7 +136,7 @@ class Generator(ProgressiveBaseModel):
         elif len(args) == 3:
             batch_size, device, dtype = args
             return torch.randn(batch_size, 32, 4, 4,
-                               device=device,
+                               device=torch.device('cpu'),
                                dtype=dtype)
         raise ValueError(
             f"Expected either x_in or (batch_size, device, dtype. Got: {args}")

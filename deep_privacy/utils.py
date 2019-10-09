@@ -1,7 +1,7 @@
 import os
 import shutil
 import torch
-from apex.amp._amp_state import _amp_state
+# from apex.amp._amp_state import _amp_state
 
 
 def save_checkpoint(state, save_path, is_best=False, max_keep=None):
@@ -51,16 +51,17 @@ def load_checkpoint(ckpt_dir_or_file, load_best=False, map_location=None):
                                              f.readline()[:-1])
     else:
         ckpt_path = ckpt_dir_or_file
-    ckpt = torch.load(ckpt_path, map_location=map_location)
+    ckpt = torch.load(ckpt_path, torch.device('cpu'))
+    # ckpt = torch.load(ckpt_path, map_location=map_location)
     print(' [*] Loading checkpoint from %s succeed!' % ckpt_path)
     return ckpt
 
 
-def amp_state_has_overflow():
-    for loss_scaler in _amp_state.loss_scalers:
-        if loss_scaler._has_overflow:
-            return True
-    return False
+# def amp_state_has_overflow():
+#     for loss_scaler in _amp_state.loss_scalers:
+#         if loss_scaler._has_overflow:
+#             return True
+#     return False
 
 
 class NetworkWrapper(torch.nn.Module):
