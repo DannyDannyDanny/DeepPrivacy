@@ -1,7 +1,11 @@
 from deep_privacy_run_through import anon_and_write_imgs
 import os
 import uuid
+import gc
+import platform
 from flask import Flask, flash, redirect, request, url_for, jsonify
+import sys
+
 
 UPLOAD_FOLDER = "./upload"
 PUBLIC_FOLDER = "./public"
@@ -46,7 +50,12 @@ def upload_file():
     filepath_public = os.path.join(app.config["PUBLIC_FOLDER"], filename)
     anon_and_write_imgs([filepath_upload],[filepath_public])
     # return redirect(url_for("uploaded_file", filename=filename))
-    return jsonify(file_url=f'http://142.93.98.12{filepath_public[1:]}')
+    print('garbage collection')
+    gc.collect()
+    if sys.platform == 'darwin':
+        return jsonify(file_url=f'http://localhost:5000{filepath_public[1:]}')
+    else:
+        return jsonify(file_url=f'http://142.93.98.12{filepath_public[1:]}')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
