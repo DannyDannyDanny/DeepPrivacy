@@ -1,4 +1,4 @@
-from deep_privacy_run_through import anon_and_write_imgs
+from deep_privacy_anonymize import anon_and_write_imgs
 import os
 import uuid
 import gc
