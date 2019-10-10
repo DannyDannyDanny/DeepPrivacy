@@ -5,6 +5,7 @@ import gc
 import platform
 from flask import Flask, flash, redirect, request, url_for, jsonify
 import sys
+from subprocess import Popen
 
 
 UPLOAD_FOLDER = "./upload"
@@ -46,16 +47,22 @@ def upload_file():
     filename = f'{uuid.uuid4()}.{ext}'
     filepath_upload = os.path.join(app.config["UPLOAD_FOLDER"], filename)
     file.save(filepath_upload)
-    path_to_ckpt = './deep_privacy/resources/cpu_checkpoint.ckpt'
     filepath_public = os.path.join(app.config["PUBLIC_FOLDER"], filename)
-    anon_and_write_imgs([filepath_upload],[filepath_public])
-    # return redirect(url_for("uploaded_file", filename=filename))
-    print('garbage collection')
-    gc.collect()
+    command = ['python','driver.py',filepath_upload,filepath_public]
+
+    print('---> app \t- calling driver:',' '.join(command))
+    p = Popen(command)
+    # path_to_ckpt = './deep_privacy/resources/cpu_checkpoint.ckpt'
+    # anon_and_write_imgs([filepath_upload],[filepath_public])
+    # # return redirect(url_for("uploaded_file", filename=filename))
+    # print('garbage collection')
+    # gc.collect()
     if sys.platform == 'darwin':
         return jsonify(file_url=f'http://localhost:5000{filepath_public[1:]}')
     else:
         return jsonify(file_url=f'http://142.93.98.12{filepath_public[1:]}')
+    #
+    return jsonify(file_url='error')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
