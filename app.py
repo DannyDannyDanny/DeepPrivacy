@@ -52,11 +52,6 @@ def upload_file():
 
     print('---> app \t- calling driver:',' '.join(command))
     p = Popen(command)
-    # path_to_ckpt = './deep_privacy/resources/cpu_checkpoint.ckpt'
-    # anon_and_write_imgs([filepath_upload],[filepath_public])
-    # # return redirect(url_for("uploaded_file", filename=filename))
-    # print('garbage collection')
-    # gc.collect()
     if sys.platform == 'darwin':
         return jsonify(file_url=f'http://localhost:5000{filepath_public[1:]}')
     else:
