@@ -48,7 +48,7 @@ def upload_file():
     filepath_upload = os.path.join(app.config["UPLOAD_FOLDER"], filename)
     file.save(filepath_upload)
     filepath_public = os.path.join(app.config["PUBLIC_FOLDER"], filename)
-    command = ['python','driver.py',filepath_upload,filepath_public]
+    command = ['python3','driver.py',filepath_upload,filepath_public]
 
     print('---> app \t- calling driver:',' '.join(command))
     p = Popen(command)
