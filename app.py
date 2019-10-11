@@ -6,7 +6,7 @@ import platform
 from flask import Flask, flash, redirect, request, url_for, jsonify
 import sys
 from subprocess import Popen
-
+from flask_cors import CORS
 
 UPLOAD_FOLDER = "./upload"
 PUBLIC_FOLDER = "./public"
@@ -15,8 +15,8 @@ ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 """
 curl -F "file=@ainsley.jpg" localhost:5000/
 """
-
 app = Flask(__name__)
+CORS(app)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.config["PUBLIC_FOLDER"] = PUBLIC_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
